@@ -3,14 +3,30 @@ class Person {
     this.name = name;
     this.first = first;
     this.second = second;
-    console.log('constructor');
-
+  }
+  sum() {
+    return this.first + this.second;
   }
 }
 
-console.log('==================');
-var kim = new Person('kim', 10, 20);
-console.log(kim);
+class PersonPlus extends Person {//상속(extends)
+  constructor(name, first, second, thrid) {
+    super(name, first, second);
+    this.thrid = thrid;
+  }
+  sum() {
+    return this.name + ' score : ' + (super.sum() + this.thrid);
+  }
+  avg() {
+    return (this.first + this.second + this.thrid) / 3;
+  }
+}
+
+var kim = new PersonPlus('kim', 10, 20, 30);
+// kim.sum = function () {
+//   return this.first + this.second;
+// }
+console.log(kim.sum(), kim.avg());
 
 
 
